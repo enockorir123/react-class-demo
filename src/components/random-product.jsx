@@ -12,11 +12,14 @@ export default function RandomProduct() {
 			.then((data) => setProduct(data));
 	}, [productId]);
 
-	// implement a randomize function that returns a random integer from 1 to 20 and updates the productId state variable
-	// function randomize() {}
+	// implement a randomize function that returns a random integer from 1 to 20
+	function randomize() {
+		const randomId = Math.floor(Math.random() * 20) + 1;
+		setProductId(randomId);
+	}
 
 	return (
-		<div className="h-screen flex flex-col justify-center items-center ">
+		<div className="h-screen flex flex-col justify-center items-center">
 			<div className="max-w-md flex flex-col items-center">
 				{Object.keys(product).length > 0 ? (
 					<ProductCard
@@ -34,10 +37,10 @@ export default function RandomProduct() {
 
 				<div className="mt-10 flex items-center gap-10">
 					<button
-						className="bg-orange-500 font-bold  text-black p-3 rounded-lg"
-						onClick={() => setProductId(productId + 1)}
+						className="bg-orange-500 font-bold text-black p-3 rounded-lg"
+						onClick={randomize}
 					>
-						Fetch one product
+						Randomize product
 					</button>
 
 					<h1 className="font-mono text-3xl">id: {productId}</h1>
